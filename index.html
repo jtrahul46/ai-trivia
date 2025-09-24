@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Booth Games - Career Avenue</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>🤖 AI Trivia</h1>
+        </header>
+
+        <nav class="tab-nav">
+            <button class="tab-btn active" onclick="showTab('quiz-challenge')">AI Quiz Challenge</button>
+            <button class="tab-btn" onclick="showTab('millionaire')">AI-llionaire</button>
+            <button class="tab-btn" onclick="showTab('ai-or-human')">AI or Human?</button>
+            <button class="tab-btn" onclick="showTab('leaderboard')">Leaderboard</button>
+        </nav>
+
+        <!-- AI Quiz Challenge Tab -->
+        <div id="quiz-challenge" class="tab-content active">
+            <div class="game-container">
+                <h2>AI Quiz Challenge</h2>
+                <div id="quiz-game">
+                    <div id="quiz-start" class="game-screen">
+                        <p>Test your AI knowledge! Answer 10 questions and see how you score.</p>
+                        <input type="text" id="quiz-player-name" placeholder="Enter your name" maxlength="20">
+                        <button class="start-btn" onclick="startQuiz()">Start Quiz</button>
+                    </div>
+                    
+                    <div id="quiz-playing" class="game-screen hidden">
+                        <div class="score-bar">
+                            <span>Question <span id="quiz-question-num">1</span>/10</span>
+                            <span>Score: <span id="quiz-score">0</span>/10</span>
+                        </div>
+                        <div class="question-container">
+                            <h3 id="quiz-question"></h3>
+                            <div class="answers-grid" id="quiz-answers"></div>
+                        </div>
+                        <div id="quiz-feedback" class="feedback hidden"></div>
+                    </div>
+
+                    <div id="quiz-end" class="game-screen hidden">
+                        <h3>Quiz Complete!</h3>
+                        <div class="final-score">
+                            <span id="quiz-final-score"></span>
+                        </div>
+                        <button class="restart-btn" onclick="resetQuiz()">Play Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Who Wants to Be an AI-llionaire Tab -->
+        <div id="millionaire" class="tab-content">
+            <div class="game-container">
+                <h2>Who Wants to Be an AI-llionaire?</h2>
+                <div id="millionaire-game">
+                    <div id="millionaire-start" class="game-screen">
+                        <p>Answer increasingly difficult AI questions to become an AI-llionaire!</p>
+                        <input type="text" id="millionaire-player-name" placeholder="Enter your name" maxlength="20">
+                        <button class="start-btn" onclick="startMillionaire()">Start Game</button>
+                    </div>
+
+                    <div id="millionaire-playing" class="game-screen hidden">
+                        <div class="millionaire-header">
+                            <div class="lifelines">
+                                <button id="fifty-fifty" class="lifeline" onclick="useFiftyFifty()">50/50</button>
+                                <button id="skip-question" class="lifeline" onclick="skipQuestion()">Skip</button>
+                            </div>
+                            <div class="current-level">
+                                Level <span id="millionaire-level">1</span>/10
+                            </div>
+                        </div>
+                        <div class="question-container">
+                            <h3 id="millionaire-question"></h3>
+                            <div class="answers-grid" id="millionaire-answers"></div>
+                        </div>
+                        <div id="millionaire-feedback" class="feedback hidden"></div>
+                    </div>
+
+                    <div id="millionaire-end" class="game-screen hidden">
+                        <h3>Game Over!</h3>
+                        <div class="final-score">
+                            You reached Level <span id="millionaire-final-level"></span>!
+                        </div>
+                        <button class="restart-btn" onclick="resetMillionaire()">Play Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI or Human Tab -->
+        <div id="ai-or-human" class="tab-content">
+            <div class="game-container">
+                <h2>AI or Human?</h2>
+                <div id="ai-human-game">
+                    <div id="ai-human-start" class="game-screen">
+                        <p>Can you tell if text was written by AI or a human? Test your detective skills!</p>
+                        <input type="text" id="ai-human-player-name" placeholder="Enter your name" maxlength="20">
+                        <button class="start-btn" onclick="startAiHumanGame()">Start Game</button>
+                    </div>
+
+                    <div id="ai-human-playing" class="game-screen hidden">
+                        <div class="score-bar">
+                            <span>Text <span id="ai-human-question-num">1</span>/7</span>
+                            <span>Score: <span id="ai-human-score">0</span>/7</span>
+                        </div>
+                        <div class="text-container">
+                            <div class="text-sample">
+                                <h3>Read this text sample:</h3>
+                                <div id="ai-human-text" class="sample-text"></div>
+                            </div>
+                        </div>
+                        <div class="question-container">
+                            <h3>Was this written by AI or a Human?</h3>
+                            <div class="answers-grid" id="ai-human-answers">
+                                <button class="answer-btn" onclick="selectAiHumanAnswer('ai')">🤖 AI Generated</button>
+                                <button class="answer-btn" onclick="selectAiHumanAnswer('human')">👤 Human Written</button>
+                            </div>
+                        </div>
+                        <div id="ai-human-feedback" class="feedback hidden"></div>
+                    </div>
+
+                    <div id="ai-human-end" class="game-screen hidden">
+                        <h3>Game Complete!</h3>
+                        <div class="final-score">
+                            <span id="ai-human-final-score"></span>
+                        </div>
+                        <p>How good are you at spotting AI text?</p>
+                        <button class="restart-btn" onclick="resetAiHumanGame()">Play Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboard Tab -->
+        <div id="leaderboard" class="tab-content">
+            <div class="game-container">
+                <h2>🏆 Leaderboard</h2>
+                <div class="leaderboard-container">
+                    <div class="leaderboard-section">
+                        <h3>AI Quiz Challenge</h3>
+                        <div id="quiz-leaderboard" class="leaderboard-list">
+                            <p class="no-scores">No scores yet!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="leaderboard-section">
+                        <h3>AI-llionaire</h3>
+                        <div id="millionaire-leaderboard" class="leaderboard-list">
+                            <p class="no-scores">No scores yet!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="leaderboard-section">
+                        <h3>AI or Human?</h3>
+                        <div id="ai-human-leaderboard" class="leaderboard-list">
+                            <p class="no-scores">No scores yet!</p>
+                        </div>
+                    </div>
+                    
+                    <button class="clear-btn" onclick="clearAllLeaderboards()">Clear All Scores</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
