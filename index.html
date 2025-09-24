@@ -98,27 +98,30 @@
                 <h2>AI or Human?</h2>
                 <div id="ai-human-game">
                     <div id="ai-human-start" class="game-screen">
-                        <p>Can you tell if text was written by AI or a human? Test your detective skills!</p>
+                        <p>Can you tell if an image was created by AI or a human? Test your detective skills with 10 challenging images!</p>
                         <input type="text" id="ai-human-player-name" placeholder="Enter your name" maxlength="20">
                         <button class="start-btn" onclick="startAiHumanGame()">Start Game</button>
                     </div>
 
                     <div id="ai-human-playing" class="game-screen hidden">
                         <div class="score-bar">
-                            <span>Text <span id="ai-human-question-num">1</span>/7</span>
-                            <span>Score: <span id="ai-human-score">0</span>/7</span>
+                            <span>Image <span id="ai-human-question-num">1</span>/10</span>
+                            <span>Score: <span id="ai-human-score">0</span>/10</span>
                         </div>
-                        <div class="text-container">
-                            <div class="text-sample">
-                                <h3>Read this text sample:</h3>
-                                <div id="ai-human-text" class="sample-text"></div>
+                        
+                        <!-- Image Sample Container -->
+                        <div class="image-sample">
+                            <h3>🖼️ Look at this image carefully:</h3>
+                            <div class="image-container">
+                                <img id="ai-human-image" src="" alt="Sample Image">
                             </div>
                         </div>
+                        
                         <div class="question-container">
-                            <h3>Was this written by AI or a Human?</h3>
+                            <h3>Was this image created by AI or a Human?</h3>
                             <div class="answers-grid" id="ai-human-answers">
                                 <button class="answer-btn" onclick="selectAiHumanAnswer('ai')">🤖 AI Generated</button>
-                                <button class="answer-btn" onclick="selectAiHumanAnswer('human')">👤 Human Written</button>
+                                <button class="answer-btn" onclick="selectAiHumanAnswer('human')">👤 Human Created</button>
                             </div>
                         </div>
                         <div id="ai-human-feedback" class="feedback hidden"></div>
@@ -129,7 +132,7 @@
                         <div class="final-score">
                             <span id="ai-human-final-score"></span>
                         </div>
-                        <p>How good are you at spotting AI text?</p>
+                        <p>How good are you at spotting AI content?</p>
                         <button class="restart-btn" onclick="resetAiHumanGame()">Play Again</button>
                     </div>
                 </div>
