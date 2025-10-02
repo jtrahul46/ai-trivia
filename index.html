@@ -9,7 +9,8 @@
 <body>
     <div class="app-container">
         <header>
-            <h1>🤖 Career Avenue</h1>
+            <h1>🤖 AI Trivia</h1>
+            <p>AI Challenge Station - Are You Ready?</p>
         </header>
 
         <nav class="tab-nav">
@@ -25,15 +26,15 @@
                 <h2>AI Quiz Challenge</h2>
                 <div id="quiz-game">
                     <div id="quiz-start" class="game-screen">
-                        <p>Test your AI knowledge! Answer 10 questions and see how you score.</p>
+                        <p>Test your AI knowledge! Answer 5 randomly selected questions and see how you score.</p>
                         <input type="text" id="quiz-player-name" placeholder="Enter your name" maxlength="20">
                         <button class="start-btn" onclick="startQuiz()">Start Quiz</button>
                     </div>
                     
                     <div id="quiz-playing" class="game-screen hidden">
                         <div class="score-bar">
-                            <span>Question <span id="quiz-question-num">1</span>/10</span>
-                            <span>Score: <span id="quiz-score">0</span>/10</span>
+                            <span>Question <span id="quiz-question-num">1</span>/5</span>
+                            <span>Score: <span id="quiz-score">0</span>/5</span>
                         </div>
                         <div class="question-container">
                             <h3 id="quiz-question"></h3>
@@ -71,7 +72,7 @@
                                 <button id="skip-question" class="lifeline" onclick="skipQuestion()">Skip</button>
                             </div>
                             <div class="current-level">
-                                Level <span id="millionaire-level">1</span>/10
+                                Level <span id="millionaire-level">1</span>/5
                             </div>
                         </div>
                         <div class="question-container">
@@ -98,15 +99,15 @@
                 <h2>AI or Human?</h2>
                 <div id="ai-human-game">
                     <div id="ai-human-start" class="game-screen">
-                        <p>Can you tell if an image was created by AI or a human? Test your detective skills with 10 challenging images!</p>
+                        <p>Can you tell if an image was created by AI or a human? Test your detective skills with 5 randomly selected images from our collection!</p>
                         <input type="text" id="ai-human-player-name" placeholder="Enter your name" maxlength="20">
                         <button class="start-btn" onclick="startAiHumanGame()">Start Game</button>
                     </div>
 
                     <div id="ai-human-playing" class="game-screen hidden">
                         <div class="score-bar">
-                            <span>Image <span id="ai-human-question-num">1</span>/10</span>
-                            <span>Score: <span id="ai-human-score">0</span>/10</span>
+                            <span>Image <span id="ai-human-question-num">1</span>/5</span>
+                            <span>Score: <span id="ai-human-score">0</span>/5</span>
                         </div>
                         
                         <!-- Image Sample Container -->
